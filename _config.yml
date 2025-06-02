@@ -75,12 +75,3 @@ collections:
   collections:
     output: true
     permalink: /c/:name/
-
-# Thêm collections vào navigation (tùy chọn)
-nav_items:
-  - title: "Home"
-    url: "/"
-  - title: "Collections"
-    url: "/collections/"
-  - title: "About"
-    url: "/about/"
