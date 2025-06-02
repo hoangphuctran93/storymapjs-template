@@ -2,6 +2,8 @@
 title:
 nav: About
 layout: page-narrow
+permalink: /about/
+redirect_from: /about
 ---
 # Exp.QuangNgai.org - Khám phá Quảng Ngãi qua câu chuyện sống động
 
