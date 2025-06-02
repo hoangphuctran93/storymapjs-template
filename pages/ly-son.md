@@ -4,4 +4,6 @@ title: Khám phá Quảng Ngãi
 layout: storymap-full
 # add storymap data
 storymap: ly-son.csv
+permalink: /ly-son/
+redirect_from: /ly-son
 ---
