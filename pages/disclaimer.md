@@ -1,4 +1,9 @@
-# MIỄN TRỪ TRÁCH NHIỆM (DISCLAIMER)
+---
+title: MIỄN TRỪ TRÁCH NHIỆM (DISCLAIMER)
+layout: page-narrow
+permalink: /disclaimer/
+redirect_from: /disclaimer
+---
 
 **Cập nhật lần cuối: 28/05/2025**
 
