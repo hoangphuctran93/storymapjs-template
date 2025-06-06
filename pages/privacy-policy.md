@@ -1,3 +1,9 @@
+---
+title: 
+layout: default
+permalink: /privacy-policy/
+redirect_from: /privacy-policy
+---
 # CHÍNH SÁCH BẢO MẬT (PRIVACY POLICY)
 
 **Cập nhật lần cuối: 28/05/2025**
