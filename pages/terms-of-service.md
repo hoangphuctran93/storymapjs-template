@@ -1,3 +1,9 @@
+---
+title: 
+layout: page-narrow
+permalink: /terms-of-service/
+redirect_from: /terms-of-service
+---
 # ĐIỀU KHOẢN SỬ DỤNG (TERMS OF SERVICE)
 
 **Cập nhật lần cuối: 28/05/2025**
