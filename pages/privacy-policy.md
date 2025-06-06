@@ -1,6 +1,6 @@
 ---
 title: 
-layout: default
+layout: page-narrow
 permalink: /privacy-policy/
 redirect_from: /privacy-policy
 ---
