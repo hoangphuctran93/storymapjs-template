@@ -1,0 +1,23 @@
+<!-- FOOTER SYSTEM TỔNG HỢP -->
+{% if site.footer_global.sections %}
+  {% for section in site.footer_global.display_order %}
+    {% case section %}
+      {% when 'main' %}
+        {% if site.footer_global.sections.main %}
+          {% include footer-main.html %}
+        {% endif %}
+      {% when 'copyright' %}
+        {% if site.footer_global.sections.copyright %}
+          {% include footer-copyright.html %}
+        {% endif %}
+      {% when 'credit' %}
+        {% if site.footer_global.sections.credit %}
+          {% include footer-credit.html %}
+        {% endif %}
+    {% endcase %}
+  {% endfor %}
+{% else %}
+  {% include footer-main.html %}
+  {% include footer-copyright.html %}
+  {% include footer-credit.html %}
+{% endif %}

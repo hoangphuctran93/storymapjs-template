@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/assets/lib/storymapjs/css/storymap.css">
 
 <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <meta name="description" content="Khám phá Quảng Ngãi">
 <meta name="author" content="Exp Quảng Ngãi .Org; " >
@@ -34,16 +35,16 @@
 <meta property="og:site_name" content="Explore Quang Ngai" />
 <meta property="og:type" content="website" />
 
-<meta property="og:url" content="http://localhost:4002/index.html" />
+<meta property="og:url" content="http://localhost:4000/index.html" />
 <meta property="og:locale" content="en_US" />
 
 
 <!-- breadcrumbs schema -->
-<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4002/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4002/index.html", "name": "Khám phá Quảng Ngãi" } }] }</script>
+<script type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://localhost:4000/", "name": "Explore Quang Ngai" } },{ "@type": "ListItem", "position": 2, "item": { "@id": "http://localhost:4000/index.html", "name": "Khám phá Quảng Ngãi" } }] }</script>
 
 
 
-<!-- Last build date: 2025-06-03 -->
+<!-- Last build date: 2025-06-06 -->
 
     </head>
     <body class="d-flex flex-column h-100">
@@ -196,112 +197,581 @@ Không ảnh hưởng đến collections navigation và functionality
 </div>
 
         </main>
-        <footer class="mt-auto border-top bg-light">
-    <div class="container my-4">
-        <p><a href="/">Explore Quang Ngai</a> | Khám phá Quảng Ngãi, Exp Quảng Ngãi .Org 2025</p>
-    </div>
-</footer>
-        <!-- ===================================================================
-SECOND FOOTER CREDIT - KHÔNG ẢNH HƯỞNG COLLECTIONS FOOTER
-Thêm vào cuối trang sau footer chính của collections
-=================================================================== -->
+        <!-- FOOTER SYSTEM TỔNG HỢP -->
 
+  
+    
+        
+          <!-- FOOTER MAIN TEMPLATE - FIX CSS STYLING -->
 
-<div id="credit-footer" class="py-3">
+<style>
+/* FOOTER MAIN CSS - SỬ DỤNG CSS THUẦN VỚI LIQUID */
+
+.footer-main-section {
+  background: linear-gradient(135deg, #1e3a8a, #1e40af);
+  color: #ffffff;
+  padding: 3rem 0;
+  position: relative;
+}
+
+.footer-main-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #374151;
+}
+
+.footer-logo {
+  height: 40px;
+  transition: all 0.3s ease;
+  filter: brightness(1.1);
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}
+
+.brand-title {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.brand-description {
+  color: #e5e7eb;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.contact-item {
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.contact-item a {
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #fbbf24;
+}
+
+.footer-column-title {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer-link {
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: #fbbf24;
+  transform: translateX(5px);
+}
+
+.social-links {
+  flex-wrap: wrap;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-main-section {
+    padding: 2rem 0;
+  }
+  
+  .footer-main-section .col-lg-3,
+  .footer-main-section .col-lg-2 {
+    margin-bottom: 2rem;
+  }
+  
+.social-links {
+  justify-content: center;
+}
+
+.footer-main-section .row {
+  justify-content: space-between;
+}
+}
+</style>
+
+<footer id="footer-main" class="footer-main-section">
   <div class="container">
-    <div class="row align-items-center flex-column flex-md-row">
-
-      <!-- Developer Credit -->
-      <div class="col-md-6 text-left text-md-left">
-        <small class="credit-text">
-          <strong>Phát triển và vận hành:</strong>
-
+    <div class="row">
+      
+      <!-- Brand Section -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="footer-brand">
           
-            <a href="https://agentc.asia" target="_blank"
-               class="credit-link text-decoration-none"
-               style="color: var(--credit-developer-link-color);"
+            <img src="/assets/images/logo-white.png" 
+                 alt="VietStoryMap" 
+                 class="footer-logo mb-3">
+          
+          
+          <h5 class="brand-title mb-3">
+            VietStoryMap
+          </h5>
+          
+          <p class="brand-description mb-3">
+            Khám phá Việt Nam qua những câu chuyện địa lý tương tác
+          </p>
+        </div>
+        
+        
+        <div class="contact-info mb-4">
+          
+            <p class="contact-item mb-2">📍 Việt Nam</p>
+          
+          
+            <p class="contact-item mb-2">
+              <a href="mailto:info@vietstorymap.com" 
+                 class="footer-link">
+                ✉️ info@vietstorymap.com
+              </a>
+            </p>
+          
+          
+            <p class="contact-item mb-2">
+              <a href="tel:+84xxxxxxxxx" 
+                 class="footer-link">
+                📞 +84 xxx xxx xxx
+              </a>
+            </p>
+          
+        </div>
+        
+        
+        
+        <div class="social-media">
+          
+            <h6 class="social-title mb-3">Kết nối với chúng tôi</h6>
+          
+          <div class="social-links d-flex gap-3">
+            
+              <a href="https://facebook.com/vietstorymap" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 style="color: #1877f2;"
+                 title="Facebook">
+                <i class="fab fa-facebook fa-lg"></i>
+              </a>
+            
+              <a href="https://instagram.com/vietstorymap" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 style="color: #e4405f;"
+                 title="Instagram">
+                <i class="fab fa-instagram fa-lg"></i>
+              </a>
+            
+              <a href="https://youtube.com/vietstorymap" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 style="color: #ff0000;"
+                 title="YouTube">
+                <i class="fab fa-youtube fa-lg"></i>
+              </a>
+            
+              <a href="https://tiktok.com/@vietstorymap" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 style="color: #000000;"
+                 title="TikTok">
+                <i class="fab fa-tiktok fa-lg"></i>
+              </a>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Navigation Columns -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">Khám Phá</h6>
+        <ul class="footer-links list-unstyled">
+          
+            <li class="mb-2">
+              <a href="/collections/" class="footer-link">
+                Collections
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/storymaps/" class="footer-link">
+                StoryMaps
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/interactive-map/" class="footer-link">
+                Bản đồ tương tác
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/trending-destinations/" class="footer-link">
+                Điểm đến hot
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">Nội Dung</h6>
+        <ul class="footer-links list-unstyled">
+          
+            <li class="mb-2">
+              <a href="/travel-news/" class="footer-link">
+                Tin tức du lịch
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/blog/" class="footer-link">
+                Blog
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/guides/" class="footer-link">
+                Hướng dẫn
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/videos/" class="footer-link">
+                Video
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">Hỗ Trợ</h6>
+        <ul class="footer-links list-unstyled">
+          
+            <li class="mb-2">
+              <a href="/help-center/" class="footer-link">
+                Trung tâm trợ giúp
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/contact/" class="footer-link">
+                Liên hệ
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/faq/" class="footer-link">
+                FAQ
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/report-bug/" class="footer-link">
+                Báo lỗi
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">Về Chúng Tôi</h6>
+        <ul class="footer-links list-unstyled">
+          
+            <li class="mb-2">
+              <a href="/about/" class="footer-link">
+                Giới thiệu
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/team/" class="footer-link">
+                Đội ngũ
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/careers/" class="footer-link">
+                Tuyển dụng
+              </a>
+            </li>
+          
+            <li class="mb-2">
+              <a href="/partners/" class="footer-link">
+                Đối tác
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+        
+      
+  
+    
+        
+          <!-- FOOTER COPYRIGHT TEMPLATE - FIX CSS -->
+
+<style>
+/* FOOTER COPYRIGHT CSS - SỬ DỤNG CSS THUẦN */
+.footer-copyright-section {
+  background-color: #111827;
+  color: #9ca3af;
+  border-top: 1px solid #374151;
+  padding: 1.5rem 0;
+  font-size: 0.875rem;
+}
+
+.copyright-text {
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.legal-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.legal-link {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+/* Fix: Sử dụng CSS thuần thay vì SCSS */
+.legal-link:hover {
+  color: #ffffff;
+}
+
+.separator {
+  color: #9ca3af;
+  opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .legal-links {
+    justify-content: center;
+    font-size: 0.8rem;
+  }
+  
+  .separator {
+    display: none;
+  }
+  
+  .legal-link {
+    margin: 0.25rem 0.5rem;
+  }
+  
+  .footer-copyright-section .col-md-6 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .footer-copyright-section .col-md-6:last-child {
+    margin-bottom: 0;
+  }
+}
+</style>
+
+<div id="footer-copyright" class="footer-copyright-section">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Copyright Text -->
+      <div class="col-md-6 text-center text-md-start">
+        <p class="copyright-text mb-0">
+          © 2025 
+          EXP Quang Ngai .Org.
+          
+            Tất cả quyền được bảo lưu
+          
+        </p>
+      </div>
+      
+      <!-- Legal Links -->
+      
+      <div class="col-md-6 text-center text-md-end">
+        <div class="legal-links">
+          
+            <a href="/privacy-policy/" class="legal-link">Chính sách bảo mật</a>
+            
+              <span class="separator mx-2">|</span>
+            
+          
+            <a href="/terms-of-service/" class="legal-link">Điều khoản sử dụng</a>
+            
+              <span class="separator mx-2">|</span>
+            
+          
+            <a href="/sitemap.xml" class="legal-link">Sitemap</a>
+            
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+
+        
+      
+  
+    
+        
+          <!-- FOOTER CREDIT TEMPLATE - FIX CSS -->
+
+<style>
+/* FOOTER CREDIT CSS - SỬ DỤNG CSS THUẦN */
+.footer-credit-section {
+  background-color: #0f172a;
+  color: #64748b;
+  border-top: 1px solid #1e293b;
+  padding: 1rem 0;
+  font-size: 0.8rem;
+}
+
+.credit-link {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Fix: Sử dụng CSS thuần thay vì SCSS nesting */
+.credit-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.8;
+}
+
+.credit-link.developer-link {
+  color: #f59e0b;
+}
+
+.credit-link.sponsor-link {
+  color: #3b82f6;
+}
+
+.developer-name {
+  color: #f59e0b;
+}
+
+.sponsor-name {
+  color: #3b82f6;
+}
+
+.credit-text {
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-credit-section .col-md-6 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .footer-credit-section .col-md-6:last-child {
+    margin-bottom: 0;
+  }
+  
+  .credit-text {
+    font-size: 0.75rem;
+  }
+}
+</style>
+
+<div id="footer-credit" class="footer-credit-section">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Developer Credit -->
+      <div class="col-md-6 text-center text-md-start">
+        <small class="credit-text">
+          <strong>Phát triển và vận hành:</strong> 
+          
+          
+            <a href="https://agentc.asia" target="_blank" 
+               class="credit-link developer-link"
                rel="noopener noreferrer">
               <i class="fas fa-external-link-alt me-1"></i>
               AgentC Asia
             </a>
           
-
-          
         </small>
       </div>
-
+      
       <!-- Sponsor Credit -->
-      <div class="col-md-6 text-right text-md-right">
+      <div class="col-md-6 text-center text-md-end">
         <small class="credit-text">
-          <strong>Tài trợ bởi:</strong>
-
+          <strong>Tài trợ bởi:</strong> 
           
-            <a href="" target="_blank"
-               class="credit-link text-decoration-none"
-               style="color: var(--credit-sponsor-text-color);"
+          
+            <a href="https://quangngai.org" target="_blank" 
+               class="credit-link sponsor-link"
                rel="noopener noreferrer">
               Cộng đồng hỗ trợ doanh nghiệp Quảng Ngãi .Org
             </a>
           
         </small>
       </div>
-
+      
     </div>
   </div>
 </div>
 
-<!-- CSS không ảnh hưởng collections styling -->
-<style>
-  :root {
-    --footer-bg-color: #374151;
-    --footer-text-color: #ffffff;
-    --credit-developer-link-color: #fbbf24;
-    --credit-sponsor-text-color: #60a5fa;
-    --transition-base: 0.3s;
-  }
 
-  #credit-footer {
-    transition: all var(--transition-base) ease;
-    margin-top: 0; /* Không tạo gap với footer chính */
-    background-color: var(--footer-bg-color);
-    border-top: 1px solid #4b5563;
-    font-size: 0.875rem;
-  }
-
-  .credit-link {
-    transition: all var(--transition-base) ease;
-    display: inline-block;
-  }
-
-  .credit-link:hover {
-    transform: translateY(-1px);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
-
-  .credit-text {
-    line-height: 1.5;
-    color: var(--footer-text-color);
-  }
-
-  /* Responsive design */
+        
+    
   
-  @media (max-width: 768px) {
-    #credit-footer .col-md-6 {
-      text-align: center !important;
-      margin-bottom: 0.5rem;
-    }
-
-    #credit-footer .col-md-6:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .credit-text {
-      font-size: 0.8rem !important;
-    }
-  
-</style>
 
 
         <!-- Bootstrap JS bundle -->

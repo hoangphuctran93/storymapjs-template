@@ -1,115 +1,104 @@
-<!-- ===================================================================
-SECOND FOOTER CREDIT - KHÔNG ẢNH HƯỞNG COLLECTIONS FOOTER
-Thêm vào cuối trang sau footer chính của collections
-=================================================================== -->
-
+<!-- FOOTER CREDIT TEMPLATE - FIX CSS -->
 {% if site.footer_credit.enabled %}
-<div id="credit-footer" class="py-3">
+<style>
+/* FOOTER CREDIT CSS - SỬ DỤNG CSS THUẦN */
+.footer-credit-section {
+  background-color: {{ site.footer_credit.styling.background_color | default: '#0f172a' }};
+  color: {{ site.footer_credit.styling.text_color | default: '#64748b' }};
+  border-top: {{ site.footer_credit.styling.border_top | default: '1px solid #1e293b' }};
+  padding: {{ site.footer_credit.styling.padding | default: '1rem 0' }};
+  font-size: {{ site.footer_credit.styling.font_size | default: '0.8rem' }};
+}
+
+.credit-link {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Fix: Sử dụng CSS thuần thay vì SCSS nesting */
+.credit-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.8;
+}
+
+.credit-link.developer-link {
+  color: {{ site.footer_credit.styling.developer_link_color | default: '#f59e0b' }};
+}
+
+.credit-link.sponsor-link {
+  color: {{ site.footer_credit.styling.sponsor_text_color | default: '#3b82f6' }};
+}
+
+.developer-name {
+  color: {{ site.footer_credit.styling.developer_link_color | default: '#f59e0b' }};
+}
+
+.sponsor-name {
+  color: {{ site.footer_credit.styling.sponsor_text_color | default: '#3b82f6' }};
+}
+
+.credit-text {
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-credit-section .col-md-6 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .footer-credit-section .col-md-6:last-child {
+    margin-bottom: 0;
+  }
+  
+  .credit-text {
+    font-size: 0.75rem;
+  }
+}
+</style>
+
+<div id="footer-credit" class="footer-credit-section">
   <div class="container">
-    <div class="row align-items-center{% if site.footer_credit.layout.stack_on_mobile %} flex-column flex-md-row{% endif %}">
-
+    <div class="row align-items-center">
+      
       <!-- Developer Credit -->
-      <div class="col-md-6 text-{{ site.footer_credit.layout.developer_position | default: 'center' }} text-md-{{ site.footer_credit.layout.developer_position | default: 'start' }}">
+      <div class="col-md-6 text-center text-md-start">
         <small class="credit-text">
-          <strong>{{ site.footer_credit.developer.description | default: 'Phát triển và vận hành' }}:</strong>
-
-          {% if site.footer_credit.developer.url %}
-            <a href="{{ site.footer_credit.developer.url }}" target="_blank"
-               class="credit-link text-decoration-none"
-               style="color: var(--credit-developer-link-color);"
+          <strong>{{ site.footer_credit.developer.description | default: 'Phát triển và vận hành' }}:</strong> 
+          
+          {% if site.footer_credit.developer.url and site.footer_credit.developer.url != "" %}
+            <a href="{{ site.footer_credit.developer.url }}" target="_blank" 
+               class="credit-link developer-link"
                rel="noopener noreferrer">
               {% if site.footer_credit.developer.show_icon %}<i class="fas fa-external-link-alt me-1"></i>{% endif %}
               {{ site.footer_credit.developer.name }}
             </a>
           {% else %}
-            <span style="color: var(--credit-developer-link-color);">
-              {{ site.footer_credit.developer.name }}
-            </span>
-          {% endif %}
-
-          {% if site.footer_credit.developer.show_logo and site.footer_credit.developer.logo %}
-            <img src="{{ site.footer_credit.developer.logo }}"
-                 alt="{{ site.footer_credit.developer.name }}"
-                 style="height: 20px; margin-left: 8px; vertical-align: middle;"
-                 loading="lazy">
+            <span class="developer-name">{{ site.footer_credit.developer.name }}</span>
           {% endif %}
         </small>
       </div>
-
+      
       <!-- Sponsor Credit -->
-      <div class="col-md-6 text-{{ site.footer_credit.layout.sponsor_position | default: 'center' }} text-md-{{ site.footer_credit.layout.sponsor_position | default: 'end' }}">
+      <div class="col-md-6 text-center text-md-end">
         <small class="credit-text">
-          <strong>{{ site.footer_credit.sponsor.description | default: 'Tài trợ bởi' }}:</strong>
-
-          {% if site.footer_credit.sponsor.url %}
-            <a href="{{ site.footer_credit.sponsor.url }}" target="_blank"
-               class="credit-link text-decoration-none"
-               style="color: var(--credit-sponsor-text-color);"
+          <strong>{{ site.footer_credit.sponsor.description | default: 'Được hỗ trợ bởi' }}:</strong> 
+          
+          {% if site.footer_credit.sponsor.url and site.footer_credit.sponsor.url != "" %}
+            <a href="{{ site.footer_credit.sponsor.url }}" target="_blank" 
+               class="credit-link sponsor-link"
                rel="noopener noreferrer">
               {{ site.footer_credit.sponsor.name }}
             </a>
           {% else %}
-            <span style="color: var(--credit-sponsor-text-color);">
-              {{ site.footer_credit.sponsor.name }}
-            </span>
+            <span class="sponsor-name">{{ site.footer_credit.sponsor.name }}</span>
           {% endif %}
         </small>
       </div>
-
+      
     </div>
   </div>
 </div>
-
-<!-- CSS không ảnh hưởng collections styling -->
-<style>
-  :root {
-    --footer-bg-color: {{ site.footer_credit.styling.background_color | default: '#374151' }};
-    --footer-text-color: {{ site.footer_credit.styling.text_color | default: '#ffffff' }};
-    --credit-developer-link-color: {{ site.footer_credit.styling.developer_link_color | default: '#fbbf24' }};
-    --credit-sponsor-text-color: {{ site.footer_credit.styling.sponsor_text_color | default: '#60a5fa' }};
-    --transition-base: {{ site.theme_extensions.effects.transition_base | default: '0.3s' }};
-  }
-
-  #credit-footer {
-    transition: all var(--transition-base) ease;
-    margin-top: 0; /* Không tạo gap với footer chính */
-    background-color: var(--footer-bg-color);
-    border-top: {{ site.footer_credit.styling.border_top | default: '1px solid #4b5563' }};
-    font-size: {{ site.footer_credit.styling.font_size | default: '0.875rem' }};
-  }
-
-  .credit-link {
-    transition: all var(--transition-base) ease;
-    display: inline-block;
-  }
-
-  .credit-link:hover {
-    transform: translateY(-1px);
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  }
-
-  .credit-text {
-    line-height: 1.5;
-    color: var(--footer-text-color);
-  }
-
-  /* Responsive design */
-  {% if site.footer_credit.layout.stack_on_mobile %}
-  @media (max-width: 768px) {
-    #credit-footer .col-md-6 {
-      text-align: center !important;
-      margin-bottom: 0.5rem;
-    }
-
-    #credit-footer .col-md-6:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  @media (max-width: 576px) {
-    .credit-text {
-      font-size: 0.8rem !important;
-    }
-  {% endif %}
-</style>
 {% endif %}

@@ -1,0 +1,245 @@
+<!-- FOOTER MAIN TEMPLATE - FIX CSS STYLING -->
+{% if site.footer_main.enabled %}
+<style>
+/* FOOTER MAIN CSS - SỬ DỤNG CSS THUẦN VỚI LIQUID */
+
+.footer-main-section {
+  background: {{ site.footer_main.styling.background_gradient | default: 'linear-gradient(135deg, #1e3a8a, #1e40af)' }};
+  color: {{ site.footer_main.styling.text_color | default: '#ffffff' }};
+  padding: 3rem 0;
+  position: relative;
+}
+
+.footer-main-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: {{ site.footer_main.styling.border_color | default: '#374151' }};
+}
+
+.footer-logo {
+  height: 40px;
+  transition: all 0.3s ease;
+  filter: brightness(1.1);
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.3);
+}
+
+.brand-title {
+  font-weight: 700;
+  color: {{ site.footer_main.styling.text_color | default: '#ffffff' }};
+}
+
+.brand-description {
+  color: {{ site.footer_main.styling.link_color | default: '#e5e7eb' }};
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.contact-item {
+  color: {{ site.footer_main.styling.link_color | default: '#e5e7eb' }};
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.contact-item a {
+  color: {{ site.footer_main.styling.link_color | default: '#e5e7eb' }};
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: {{ site.footer_main.styling.link_hover_color | default: '#fbbf24' }};
+}
+
+.footer-column-title {
+  color: {{ site.footer_main.styling.text_color | default: '#ffffff' }};
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer-link {
+  color: {{ site.footer_main.styling.link_color | default: '#e5e7eb' }};
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: {{ site.footer_main.styling.link_hover_color | default: '#fbbf24' }};
+  transform: translateX(5px);
+}
+
+.social-links {
+  flex-wrap: wrap;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-main-section {
+    padding: 2rem 0;
+  }
+  
+  .footer-main-section .col-lg-3,
+  .footer-main-section .col-lg-2 {
+    margin-bottom: 2rem;
+  }
+  
+.social-links {
+  justify-content: center;
+}
+
+.footer-main-section .row {
+  justify-content: space-between;
+}
+}
+</style>
+
+<footer id="footer-main" class="footer-main-section">
+  <div class="container">
+    <div class="row">
+      
+      <!-- Brand Section -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="footer-brand">
+          {% if site.footer_main.brand.logo %}
+            <img src="{{ site.footer_main.brand.logo | relative_url }}" 
+                 alt="{{ site.footer_main.brand.title | default: site.title }}" 
+                 class="footer-logo mb-3">
+          {% endif %}
+          
+          <h5 class="brand-title mb-3">
+            {{ site.footer_main.brand.title | default: site.title }}
+          </h5>
+          
+          <p class="brand-description mb-3">
+            {{ site.footer_main.brand.description }}
+          </p>
+        </div>
+        
+        {% if site.footer_main.brand.contact_info %}
+        <div class="contact-info mb-4">
+          {% if site.footer_main.brand.contact_info.location %}
+            <p class="contact-item mb-2">{{ site.footer_main.brand.contact_info.location }}</p>
+          {% endif %}
+          {% if site.footer_main.brand.contact_info.email %}
+            <p class="contact-item mb-2">
+              <a href="mailto:{{ site.footer_main.brand.contact_info.email | replace: '✉️ ', '' }}" 
+                 class="footer-link">
+                {{ site.footer_main.brand.contact_info.email }}
+              </a>
+            </p>
+          {% endif %}
+          {% if site.footer_main.brand.contact_info.phone and site.footer_main.brand.contact_info.phone != "" %}
+            <p class="contact-item mb-2">
+              <a href="tel:{{ site.footer_main.brand.contact_info.phone | replace: '📞 ', '' | replace: ' ', '' }}" 
+                 class="footer-link">
+                {{ site.footer_main.brand.contact_info.phone }}
+              </a>
+            </p>
+          {% endif %}
+        </div>
+        {% endif %}
+        
+        {% if site.footer_main.social_media.enabled %}
+        <div class="social-media">
+          {% if site.footer_main.social_media.title %}
+            <h6 class="social-title mb-3">{{ site.footer_main.social_media.title }}</h6>
+          {% endif %}
+          <div class="social-links d-flex gap-3">
+            {% for social in site.footer_main.social_media.links %}
+              <a href="{{ social.url }}" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 style="color: {{ social.color }};"
+                 title="{{ social.name }}">
+                <i class="{{ social.icon }} fa-lg"></i>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      
+      <!-- Navigation Columns -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">{{ site.footer_main.navigation_columns.discover.title }}</h6>
+        <ul class="footer-links list-unstyled">
+          {% for link in site.footer_main.navigation_columns.discover.links %}
+            <li class="mb-2">
+              <a href="{{ link.url | relative_url }}" class="footer-link">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">{{ site.footer_main.navigation_columns.content.title }}</h6>
+        <ul class="footer-links list-unstyled">
+          {% for link in site.footer_main.navigation_columns.content.links %}
+            <li class="mb-2">
+              <a href="{{ link.url | relative_url }}" class="footer-link">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">{{ site.footer_main.navigation_columns.support.title }}</h6>
+        <ul class="footer-links list-unstyled">
+          {% for link in site.footer_main.navigation_columns.support.links %}
+            <li class="mb-2">
+              <a href="{{ link.url | relative_url }}" class="footer-link">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h6 class="footer-column-title mb-3">{{ site.footer_main.navigation_columns.about.title }}</h6>
+        <ul class="footer-links list-unstyled">
+          {% for link in site.footer_main.navigation_columns.about.links %}
+            <li class="mb-2">
+              <a href="{{ link.url | relative_url }}" class="footer-link">
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+{% endif %}

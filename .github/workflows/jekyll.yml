@@ -54,6 +54,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyYAML
 
+      - name: Validate footer system config
+        run: |
+          chmod +x scripts/validate_footer_config.py
+          python3 scripts/validate_footer_config.py
+
       - name: Run config merger (preserving collections)
         run: |
           chmod +x scripts/merge_configs.py
