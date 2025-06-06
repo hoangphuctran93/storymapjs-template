@@ -9,6 +9,7 @@ footer_main:
   # === BRAND SECTION ===
   brand:
     logo: "assets/img/logo-expquangngai.png"
+    logo_height: "60px"
     title: "EXP Quang Ngai .Org"
     show_title: false  # THÊM MỚI: Tùy chọn bật/tắt brand title
     description: "Khám phá những câu câu chuyện kể về Quảng Ngãi qua bản đồ tương tác và các câu chuyện du lịch độc đáo."
@@ -23,21 +24,21 @@ footer_main:
     title: "Follow Us on Social"
     links:
       - name: "Facebook"
-        url: "https://facebook.com/vietstorymap"
+        url: "#"
         icon: "fab fa-facebook"
-        color: "#1877f2"
+        color: "#ffffff"
       - name: "Instagram"  
-        url: "https://instagram.com/vietstorymap"
+        url: "#"
         icon: "fab fa-instagram"
-        color: "#e4405f"
+        color: "#ffffff"
       - name: "YouTube"
-        url: "https://youtube.com/vietstorymap"
+        url: "#"
         icon: "fab fa-youtube"
-        color: "#ff0000"
+        color: "#ffffff"
       - name: "TikTok"
-        url: "https://tiktok.com/@vietstorymap"
+        url: "#"
         icon: "fab fa-tiktok"
-        color: "#000000"
+        color: "#ffffff"
   
   # === NAVIGATION COLUMNS ===
   navigation_columns:
@@ -47,35 +48,35 @@ footer_main:
         - title: "Collections"
           url: "/collections/"
         - title: "StoryMaps"
-          url: "/storymaps/"
+          url: "#"
         - title: "Bản đồ tương tác"
-          url: "/interactive-map/"
+          url: "#"
         - title: "Điểm đến hot"
-          url: "/trending-destinations/"
+          url: "#"
     
     content:
       title: "Nội Dung"
       links:
         - title: "Tin tức du lịch"
-          url: "/travel-news/"
+          url: "#"
         - title: "Blog"
-          url: "/blog/"
+          url: "#"
         - title: "Hướng dẫn"
-          url: "/guides/"
+          url: "#"
         - title: "Video"
-          url: "/videos/"
+          url: "#"
     
     support:
       title: "Hỗ Trợ"
       links:
         - title: "Trung tâm trợ giúp"
-          url: "/help-center/"
+          url: "#"
         - title: "Liên hệ"
-          url: "/contact/"
+          url: "#"
         - title: "FAQ"
-          url: "/faq/"
+          url: "#"
         - title: "Báo lỗi"
-          url: "/report-bug/"
+          url: "#"
     
     about:
       title: "Về Chúng Tôi"
@@ -83,11 +84,11 @@ footer_main:
         - title: "Giới thiệu"
           url: "/about/"
         - title: "Đội ngũ"
-          url: "/team/"
+          url: ""
         - title: "Tuyển dụng"
-          url: "/careers/"
+          url: ""
         - title: "Đối tác"
-          url: "/partners/"
+          url: ""
 
   # === STYLING ===
   styling:

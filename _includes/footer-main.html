@@ -21,7 +21,7 @@
 }
 
 .footer-logo {
-  height: 40px;
+  height: {{ site.footer_main.logo_height | default: '40px' }};
   transition: all 0.3s ease;
   filter: brightness(1.1);
 }
