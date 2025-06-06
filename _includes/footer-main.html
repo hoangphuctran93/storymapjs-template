@@ -131,11 +131,12 @@
                  alt="{{ site.footer_main.brand.title | default: site.title }}" 
                  class="footer-logo mb-3">
           {% endif %}
-          
+          <!-- Brand Title với tùy chọn bật/tắt -->
+          {% if site.footer_main.brand.show_title %}
           <h5 class="brand-title mb-3">
             {{ site.footer_main.brand.title | default: site.title }}
           </h5>
-          
+          {% endif %}
           <p class="brand-description mb-3">
             {{ site.footer_main.brand.description }}
           </p>
