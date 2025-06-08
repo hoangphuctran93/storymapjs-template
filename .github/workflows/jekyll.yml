@@ -53,20 +53,43 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install PyYAML
-
-      - name: Validate footer system config
-        run: |
-          chmod +x scripts/validate_footer_config.py
-          python3 scripts/validate_footer_config.py
-
-      - name: Run config merger (preserving collections)
+          
+      # CONSOLIDATED VALIDATION - Chỉ dùng 1 script
+      - name: Validate footer system config (specific)
         run: |
           chmod +x scripts/merge_configs.py
+          python3 scripts/merge_configs.py --validate-footer-only --verbose
+          
+      - name: Run full config merger with validation
+        run: |
           python3 scripts/merge_configs.py --verbose
-
+          
+      # Verify merged result (enhanced từ code cũ)
+      - name: Verify merged features
+        run: |
+          echo "🔍 Verifying merged features..."
+          
+          if [ ! -f "_temp/_config.yml" ]; then
+            echo "❌ Merged config file not found!"
+            exit 1
+          fi
+          
+          # Enhanced verification với header support
+          sections=("collections" "footer_main" "footer_copyright" "footer_credit" "header" "favicon")
+          for section in "${sections[@]}"; do
+            if grep -q "${section}:" _temp/_config.yml; then
+              echo "✅ ${section} config found"
+            else
+              echo "⚠️  ${section} config missing"
+            fi
+          done
+          
       - name: Build with Jekyll
-        # Outputs to the './_site' directory by default
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --config ./_temp/_config.yml
+        run: |
+          bundle exec jekyll build \
+            --baseurl "${{ steps.pages.outputs.base_path }}" \
+            --config ./_temp/_config.yml \
+            --trace
         env:
           JEKYLL_ENV: production
 

@@ -40,6 +40,58 @@ class StoryMapConfigMerger:
         # Tạo thư mục tạm
         self.temp_dir.mkdir(exist_ok=True)
     
+    def validate_footer_specific(self) -> bool:
+        """
+        Specific footer system validation (tương tự validate_footer_config.py)
+        """
+        config_path = self.configs_dir / 'config_footer.yml'
+        
+        logger.info("🔍 Validating footer system configuration...")
+        
+        if not config_path.exists():
+            logger.warning("⚠️  Footer system config not found, using defaults")
+            return True
+        
+        try:
+            with open(config_path, 'r', encoding='utf-8') as f:
+                footer_config = yaml.safe_load(f)
+            
+            if not footer_config:
+                logger.error("❌ Footer config file is empty")
+                return False
+            
+            # Kiểm tra các section bắt buộc
+            required_sections = ['footer_main', 'footer_copyright', 'footer_credit', 'footer_global']
+            missing_sections = []
+            
+            for section in required_sections:
+                if section not in footer_config:
+                    missing_sections.append(section)
+            
+            if missing_sections:
+                for section in missing_sections:
+                    logger.error(f'❌ Missing required footer section: {section}')
+                return False
+            
+            # Footer-specific validation
+            if 'navigation_columns' in footer_config['footer_main']:
+                columns = footer_config['footer_main']['navigation_columns']
+                logger.info(f'✅ Footer navigation: {len(columns)} columns configured')
+            
+            if footer_config['footer_main'].get('social_media', {}).get('enabled', False):
+                social_count = len(footer_config['footer_main']['social_media'].get('links', []))
+                logger.info(f'✅ Social media: {social_count} platforms configured')
+            
+            logger.info('✅ Footer system config validation passed')
+            return True
+            
+        except yaml.YAMLError as e:
+            logger.error(f'❌ YAML parsing error in footer config: {e}')
+            return False
+        except Exception as e:
+            logger.error(f'❌ Footer validation error: {e}')
+            return False
+    
     def validate_collections_compatibility(self) -> bool:
         """
         Kiểm tra tương thích với collections system
@@ -257,6 +309,11 @@ class StoryMapConfigMerger:
         if not self.validate_collections_compatibility():
             return False
         
+        # Specific footer validation
+        if not self.validate_footer_specific():
+            logger.error("❌ Footer validation failed")
+            return False
+        
         # Discover configs
         config_files = self.discover_config_files()
         if not config_files:
@@ -296,6 +353,7 @@ def main():
     parser = argparse.ArgumentParser(description='StoryMapJS Config Merger')
     parser.add_argument('--test-only', action='store_true', help='Only validate configs')
     parser.add_argument('--verbose', action='store_true', help='Verbose output')
+    parser.add_argument('--validate-footer-only', action='store_true', help='Only validate footer config')
     
     args = parser.parse_args()
     
@@ -303,8 +361,13 @@ def main():
         logging.getLogger().setLevel(logging.DEBUG)
     
     merger = StoryMapConfigMerger()
-    success = merger.run(test_only=args.test_only)
     
+    # Special mode for footer-only validation
+    if args.validate_footer_only:
+        success = merger.validate_footer_specific()
+        sys.exit(0 if success else 1)
+    
+    success = merger.run(test_only=args.test_only)
     sys.exit(0 if success else 1)
 
 if __name__ == '__main__':

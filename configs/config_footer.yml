@@ -9,7 +9,6 @@ footer_main:
   # === BRAND SECTION ===
   brand:
     logo: "assets/img/logo-expquangngai.png"
-    logo_height: "60px"
     title: "EXP Quang Ngai .Org"
     show_title: false  # THÊM MỚI: Tùy chọn bật/tắt brand title
     description: "Khám phá những câu câu chuyện kể về Quảng Ngãi qua bản đồ tương tác và các câu chuyện du lịch độc đáo."
